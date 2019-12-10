@@ -1,10 +1,11 @@
+import GeoPoint from 'geo-point';
 import { LatLng } from './types';
-import {computeDestinationPoint} from 'geolib';
 
 export function getLocationDestination(from: LatLng, azimuth: number, distance: number): LatLng {
-  const location = computeDestinationPoint(from, distance, azimuth);
+  const origin = new GeoPoint(from.lat, from.lng);
+  const destination = origin.calculateDestination(distance, azimuth);
   return {
-    lat: location.latitude,
-    lng: location.longitude
+    lat: destination.latitude,
+    lng: destination.longitude
   };
 }

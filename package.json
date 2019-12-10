@@ -26,7 +26,7 @@
   "dependencies": {
     "find-remove": "^2.0.0",
     "folder-size": "^0.1.0",
-    "geolib": "^3.1.0",
+    "geo-point": "^1.2.1",
     "node-hgt": "^1.2.3"
   }
 }

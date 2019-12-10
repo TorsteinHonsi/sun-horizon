@@ -1,6 +1,6 @@
 # sun-horizon 🌄
 
-This library is highly based on [node-hgt](https://github.com/perliedman/node-hgt) and [geolib](https://github.com/manuelbieh/geolib)
+This library is highly based on [node-hgt](https://github.com/perliedman/node-hgt)
 
  - [Types](#Types)
  - [Function](#Functions)
