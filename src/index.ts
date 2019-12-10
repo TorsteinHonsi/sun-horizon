@@ -1,5 +1,6 @@
 import { highestPointInAzimuth } from './altitude';
 import { AzimuthParams, HighestPointParams, Horizon, HorizonOptions, LatLng } from './types';
+import * as Types from "./types";
 
 export async function getHorizon(origin: LatLng, options: HorizonOptions = {}): Promise<Horizon> {
   const horizon: Horizon = {
@@ -18,4 +19,4 @@ export async function getHorizon(origin: LatLng, options: HorizonOptions = {}): 
 export * from './altitude';
 export * from './cache';
 export * from './location';
-export * from './types';
+export { Types }
