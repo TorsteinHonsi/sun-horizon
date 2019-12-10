@@ -1,4 +1,8 @@
 # sun-horizon 🌄
+[![License](https://img.shields.io/npm/l/sun-horizon.svg)](LICENSE)
+[![Version](https://img.shields.io/npm/v/sun-horizon.svg)](https://www.npmjs.com/package/spongebob-speech)
+[![Build Status](https://travis-ci.org/Jeremy38100/sun-horizon.svg?branch=master)](https://travis-ci.org/Jeremy38100/sun-horizon)
+
 
 This library is highly based on [node-hgt](https://github.com/perliedman/node-hgt)
 
