@@ -14,3 +14,8 @@ export async function getHorizon(origin: LatLng, options: HorizonOptions = {}): 
   }
   return horizon;
 }
+
+export * from './altitude';
+export * from './cache';
+export * from './location';
+export * from './types';
