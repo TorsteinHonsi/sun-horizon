@@ -69,7 +69,7 @@ or
 ```
 ## Functions
 
-### `getHorizon(origin: LatLng, options: HorizonOptions = {}): Promise<Horizon>`
+#### `getHorizon(origin: LatLng, options: HorizonOptions = {}): Promise<Horizon>`
 
 ### Example
 ```ts
