@@ -1,5 +1,5 @@
 {
-  "name": "horizon",
+  "name": "sun-horizon",
   "version": "1.0.0",
   "description": "Horizon and sun path form a lat lng point",
   "main": "dist/index.js",
@@ -10,7 +10,7 @@
     "test": "mocha --timeout 20000 -r ts-node/register test/index.test.ts"
   },
   "keywords": [
-    "horizon"
+    "horizon sun path geo"
   ],
   "author": "Jerem38100",
   "license": "MIT",
