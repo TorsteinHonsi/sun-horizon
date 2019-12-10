@@ -2,6 +2,9 @@
 
 This library is highly based on [node-hgt](https://github.com/perliedman/node-hgt) and [geolib](https://github.com/manuelbieh/geolib)
 
+ - [Types](#Types)
+ - [Function](#Functions)
+
 ## Install
 `npm install sun-horizon`
 
@@ -14,7 +17,6 @@ or
 `import * as sunHorizon from 'sun-horizon';`
 
 ## Types
-
 
 ### LatLng
 ```ts
@@ -67,11 +69,12 @@ or
   elevationProfile: HorizonPoint[];
 }
 ```
+
 ## Functions
 
 #### `getHorizon(origin: LatLng, options: HorizonOptions = {}): Promise<Horizon>`
 
-### Example
+#### Example
 ```ts
   const grenoble: LatLng = {
     lat: 45.185739,
