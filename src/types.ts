@@ -53,3 +53,8 @@ export interface Horizon {
   origin: LatLng;
   elevationProfile: HorizonPoint[];
 }
+
+export interface CacheData {
+  bytes: number;
+  files: number;
+}

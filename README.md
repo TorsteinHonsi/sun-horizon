@@ -70,6 +70,14 @@ or
 }
 ```
 
+### CacheData
+```ts
+{
+  bytes: number;
+  files: number;
+}
+```
+
 ## Functions
 
 #### `getHorizon(origin: LatLng, options: HorizonOptions = {}): Promise<Horizon>`

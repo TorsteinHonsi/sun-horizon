@@ -2,6 +2,7 @@ import { expect } from 'chai';
 import { getAltitude, highestPointInAzimuth } from "../src/altitude";
 import { getLocationDestination } from "../src/location";
 import { HighestPointParams, LatLng } from '../src/types';
+import { getCacheData, cleanCache } from '../src/cache';
 import { getHorizon } from '../src';
 
 const grenoble = {name: 'Grenoble', lat: 45.185739, lng: 5.736236, altitude: 218}; // grenoble;
@@ -78,6 +79,25 @@ describe('getHorizon', () => {
 
     expect(Math.min(...altitudes)).to.be.within(1400, 1500);
     expect(Math.max(...altitudes)).to.be.within(3800, 4500);
+  });
+});
+
+describe('cache', () => {
+  it ('getCacheData', async () => {
+    await getAltitude(grenoble);
+    const cacheData = await getCacheData();
+    expect(cacheData.files).to.be.above(1);
+    expect(cacheData.bytes).to.be.above(cacheData.files * 2800000);
+  });
+
+  it ('clean cache not empty', async () => {
+    await getAltitude(grenoble);
+    expect(await cleanCache()).to.have.above(2);
+  });
+
+  it ('clean empty cache', async () => {
+    await cleanCache();
+    expect(await cleanCache()).equals(0);
   });
 });
 

@@ -7,7 +7,7 @@
   "scripts": {
     "prepublish": "npm run build",
     "build": "tsc",
-    "test": "mocha --timeout 10000 -r ts-node/register test/index.test.ts"
+    "test": "mocha --timeout 20000 -r ts-node/register test/index.test.ts"
   },
   "keywords": [
     "horizon"
@@ -24,6 +24,8 @@
     "typescript": "^3.7.3"
   },
   "dependencies": {
+    "find-remove": "^2.0.0",
+    "folder-size": "^0.1.0",
     "geolib": "^3.1.0",
     "node-hgt": "^1.2.3"
   }
