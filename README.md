@@ -107,78 +107,78 @@ const horizon = await getHorizon({lat: 45, lng: 5});
 
 ## Functions
 
-### init
+## `init`
 
-`init(cacheDirectory?: string)`
+```ts :
+init(cacheDirectory?: string): void
+```
 
 Initialize module and create the required cache directory (default is `sun-horizon-data/`)  + populate with a `.gitignore` file.
 
-#### Example
+## `getHorizon`
+
 ```ts
-init();
+getHorizon(origin: LatLng, options?: HorizonOptions): Promise<Horizon>
 ```
 
-### getHorizon
-
-`getHorizon(origin: LatLng, options: HorizonOptions = {}): Promise<Horizon>`
-
-#### Example
 ```ts
-  const grenoble: LatLng = {
-    lat: 45.185739,
-    lng: 5.736236
-  }
-  const horizon = await getHorizon(grenoble);
-  console.log(horizon.elevationProfile.map(point => point.altitude));
+const grenoble: LatLng = {
+  lat: 45.185739,
+  lng: 5.736236
+}
+const horizon = await getHorizon(grenoble);
+console.log(horizon.elevationProfile.map(point => point.altitude));
 ```
 
-### highestPointInAzimuth
+## `highestPointInAzimuth`
 
-`highestPointInAzimuth(origin: LatLng, azimuth: number, options: HighestPointParams): Promise<HorizonPoint>`
-
-#### Example
 ```ts
-  const origin: LatLng = {
-    lat: 45.185739,
-    lng: 5.736236
-  }
-  const azimuth = 90; // East
-  const point = await highestPointInAzimuth(origin, azimuth);
+highestPointInAzimuth(origin: LatLng, azimuth: number, options?: HighestPointOptions): Promise<HorizonPoint>
 ```
 
-### getAltitude
-
-`getAltitude(latLng: LatLng): Promise<number>`
-
-#### Example
 ```ts
-  const origin: LatLng = {
-    lat: 45.185739,
-    lng: 5.736236
-  }
-  const altitude = await getAltitude(origin); // in meter
+const origin: LatLng = {
+  lat: 45.185739,
+  lng: 5.736236
+}
+const azimuth = 90; // East
+const point = await highestPointInAzimuth(origin, azimuth);
 ```
 
-### getCacheData
+## `getAltitude`
 
-`getCacheData(): Promise<CacheData>`
+```ts
+getAltitude(latLng: LatLng): Promise<number>
+```
 
-#### Example
+```ts
+const origin: LatLng = {
+  lat: 45.185739,
+  lng: 5.736236
+}
+const altitude = await getAltitude(origin); // in meter
+```
+
+## `getCacheData`
 
 Return number of files and total size in `bytes`. (See [CacheData](#CacheData))
 
 ```ts
-  const cache = await getCacheData();
+getCacheData(): Promise<CacheData>
 ```
 
-### cleanCache
+```ts
+const cache = await getCacheData();
+```
 
-`cleanCache(): Promise<number>`
-
-#### Example
+## `cleanCache`
 
 Delete all .hgt cache files and return number of deleted files.
 
 ```ts
-  const deletedFiles = await cleanCache();
+cleanCache(): Promise<number>
+```
+
+```ts
+const deletedFiles = await cleanCache();
 ```

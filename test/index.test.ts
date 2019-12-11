@@ -38,17 +38,17 @@ describe('getAltitude', () => {
 
 describe('highestPointInAzimuth', () => {
   it ('North (⛰  Chartreuse) [1200, 1500]', async () => {
-    const highest = await highestPointInAzimuth(grenoble, 0, new HighestPointParams());
+    const highest = await highestPointInAzimuth(grenoble, 0);
     expect(highest.altitude).to.be.above(1200);
     expect(highest.altitude).to.be.below(1500);
   });
   it ('East (🏔  Belledonne) [2300, 3000]', async () => {
-    const highest = await highestPointInAzimuth(grenoble, 90, new HighestPointParams());
+    const highest = await highestPointInAzimuth(grenoble, 90);
     expect(highest.altitude).to.be.above(2300);
     expect(highest.altitude).to.be.below(3000);
   });
   it ('West (⛰  Vercors) [1200, 1500]', async () => {
-    const highest = await highestPointInAzimuth(grenoble, 180, new HighestPointParams());
+    const highest = await highestPointInAzimuth(grenoble, 180);
     expect(highest.altitude).to.be.above(1200);
     expect(highest.altitude).to.be.below(1500);
   });

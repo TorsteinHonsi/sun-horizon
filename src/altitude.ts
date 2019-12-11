@@ -1,5 +1,5 @@
 import { getLocationDestination } from './location';
-import { HighestPointParams, HorizonPoint, LatLng } from './types';
+import { HighestPointParams, HorizonPoint, LatLng, HighestPointOptions } from './types';
 import { getTiles } from './cache';
 
 export async function getAltitude(latLng: LatLng): Promise<number> {
@@ -13,16 +13,16 @@ export async function getAltitude(latLng: LatLng): Promise<number> {
   });
 }
 
-export async function highestPointInAzimuth(origin: LatLng, azimuth: number, options: HighestPointParams): Promise<HorizonPoint> {
+export async function highestPointInAzimuth(origin: LatLng, azimuth: number, options: HighestPointOptions = {}): Promise<HorizonPoint> {
   let highestPoint: HorizonPoint = {
     latLng: origin,
     altitude: await getAltitude(origin),
     angle: 0,
     azimuth
   };
-
-  let distance = options.distanceTick;
-  while (distance <= options.distanceMax) {
+  const parametes = new HighestPointParams(options);
+  let distance = parametes.distanceTick;
+  while (distance <= parametes.distanceMax) {
     const location = getLocationDestination(origin, azimuth, distance);
     const altitude = await getAltitude(location);
     const angle = getAngle(highestPoint.altitude, altitude, distance);
@@ -35,7 +35,7 @@ export async function highestPointInAzimuth(origin: LatLng, azimuth: number, opt
         azimuth
       };
     }
-    distance += options.distanceTick;
+    distance += parametes.distanceTick;
   }
   return highestPoint;
 }
