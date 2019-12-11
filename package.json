@@ -10,7 +10,14 @@
     "test": "mocha --timeout 30000 -r ts-node/register test/index.test.ts"
   },
   "keywords": [
-    "horizon sun path hgt srtm elevation altitude promise async"
+    "horizon",
+    "sun",
+    "hgt",
+    "srtm",
+    "elevation",
+    "altitude",
+    "promise",
+    "async"
   ],
   "author": "Jerem38100",
   "license": "MIT",
