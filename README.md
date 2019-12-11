@@ -5,7 +5,7 @@
 
 🌄 Get Horizon profile based on topography from a (latitude, longitude) point.
 
-🙌🏻 This module is highly based on [node-hgt](https://github.com/perliedman/node-hgt).
+🙌🏻 This module is heavily based on [node-hgt](https://github.com/perliedman/node-hgt).
 
  - [Types](#Types)
  - [Function](#Functions)
