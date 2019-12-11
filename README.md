@@ -1,24 +1,47 @@
 # sun-horizon 🌄
 [![License](https://img.shields.io/npm/l/sun-horizon.svg)](LICENSE)
-[![Version](https://img.shields.io/npm/v/sun-horizon.svg)](https://www.npmjs.com/package/spongebob-speech)
+[![Version](https://img.shields.io/npm/v/sun-horizon.svg)](https://www.npmjs.com/package/sun-horizon)
 [![Build Status](https://travis-ci.org/Jeremy38100/sun-horizon.svg?branch=master)](https://travis-ci.org/Jeremy38100/sun-horizon)
 
+🌄 Get Horizon profile based on topography from a (latitude, longitude) point.
 
-This library is highly based on [node-hgt](https://github.com/perliedman/node-hgt)
+🙌🏻 This module is highly based on [node-hgt](https://github.com/perliedman/node-hgt).
 
  - [Types](#Types)
  - [Function](#Functions)
+   - [init](#init)
+   - [getHorizon](#getHorizon)
+   - [highestPointInAzimuth](#highestPointInAzimuth)
+   - [getAltitude](#getAltitude)
+   - [getCacheData](#getCacheData)
+   - [cleanCache](#cleanCache)
 
 ## Install
 `npm install sun-horizon`
 
 ## Usage
 
-`const sunHorizon = require('sun-horizon');`
+✅ Call [init()](#init) function before any other operations.
+
+🗄 __sun-horizon__ uses a cache directory of HGT files (default `sun-horizon-data/`).
+
+💻 This module supports __javascript__ or __typescirpt__.
+
+```js
+const sunHorizon = require('sun-horizon');
+
+sunHorizon.init();
+const horizon = await sunHorizon.getHorizon({"lat": 45, "lng": 5});
+```
 
 or
 
-`import * as sunHorizon from 'sun-horizon';`
+```ts
+import { getHorizon, init } from 'sun-horizon';
+
+init();
+const horizon = await getHorizon({lat: 45, lng: 5});
+```
 
 ## Types
 
@@ -84,7 +107,20 @@ or
 
 ## Functions
 
-#### `getHorizon(origin: LatLng, options: HorizonOptions = {}): Promise<Horizon>`
+### init
+
+`init(cacheDirectory?: string)`
+
+Initialize module and create the required cache directory (default is `sun-horizon-data/`)  + populate with a `.gitignore` file.
+
+#### Example
+```ts
+init();
+```
+
+### getHorizon
+
+`getHorizon(origin: LatLng, options: HorizonOptions = {}): Promise<Horizon>`
 
 #### Example
 ```ts
@@ -94,4 +130,55 @@ or
   }
   const horizon = await getHorizon(grenoble);
   console.log(horizon.elevationProfile.map(point => point.altitude));
+```
+
+### highestPointInAzimuth
+
+`highestPointInAzimuth(origin: LatLng, azimuth: number, options: HighestPointParams): Promise<HorizonPoint>`
+
+#### Example
+```ts
+  const origin: LatLng = {
+    lat: 45.185739,
+    lng: 5.736236
+  }
+  const azimuth = 90; // East
+  const point = await highestPointInAzimuth(origin, azimuth);
+```
+
+### getAltitude
+
+`getAltitude(latLng: LatLng): Promise<number>`
+
+#### Example
+```ts
+  const origin: LatLng = {
+    lat: 45.185739,
+    lng: 5.736236
+  }
+  const altitude = await getAltitude(origin); // in meter
+```
+
+### getCacheData
+
+`getCacheData(): Promise<CacheData>`
+
+#### Example
+
+Return number of files and total size in `bytes`. (See [CacheData](#CacheData))
+
+```ts
+  const cache = await getCacheData();
+```
+
+### cleanCache
+
+`cleanCache(): Promise<number>`
+
+#### Example
+
+Delete all .hgt cache files and return number of deleted files.
+
+```ts
+  const deletedFiles = await cleanCache();
 ```

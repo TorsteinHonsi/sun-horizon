@@ -1,4 +1,5 @@
 src/
-data/
+sun-horizon-data/
 test/
 dist/test/
+node_modules/

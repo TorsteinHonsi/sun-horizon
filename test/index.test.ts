@@ -2,11 +2,13 @@ import { expect } from 'chai';
 import { getAltitude, highestPointInAzimuth } from "../src/altitude";
 import { getLocationDestination } from "../src/location";
 import { HighestPointParams, LatLng } from '../src/types';
-import { getCacheData, cleanCache } from '../src/cache';
+import { getCacheData, cleanCache, init } from '../src/cache';
 import { getHorizon } from '../src';
 
 const grenoble = {name: 'Grenoble', lat: 45.185739, lng: 5.736236, altitude: 218}; // grenoble;
 const chamonix = {name: 'Chamonix', lat: 45.923592, lng: 6.870126, altitude: 1035}; // chamonix
+
+init();
 
 describe('getLocationDestination', () => {
   it ('East', () => {

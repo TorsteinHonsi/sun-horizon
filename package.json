@@ -10,7 +10,7 @@
     "test": "mocha --timeout 30000 -r ts-node/register test/index.test.ts"
   },
   "keywords": [
-    "horizon sun path geo"
+    "horizon sun path hgt srtm elevation altitude promise async"
   ],
   "author": "Jerem38100",
   "license": "MIT",
@@ -26,6 +26,7 @@
   "dependencies": {
     "find-remove": "^2.0.0",
     "folder-size": "^0.1.0",
+    "fs": "0.0.1-security",
     "geo-point": "^1.2.1",
     "node-hgt": "^1.2.3"
   }

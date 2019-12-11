@@ -1,15 +1,10 @@
 import { getLocationDestination } from './location';
-import { LatLng, HighestPointParams, HorizonPoint } from './types';
-
-const TileSet = require('node-hgt').TileSet
-const ImagicoElevationDownloader = require('node-hgt').ImagicoElevationDownloader
-const tileDirectory = './data'
-const tileDownloader = new ImagicoElevationDownloader(tileDirectory)
-const tiles = new TileSet(tileDirectory, {downloader:tileDownloader});
+import { HighestPointParams, HorizonPoint, LatLng } from './types';
+import { getTiles } from './cache';
 
 export async function getAltitude(latLng: LatLng): Promise<number> {
   return new Promise((resolve, reject) => {
-    tiles.getElevation(
+    getTiles().getElevation(
       [latLng.lat, latLng.lng],
       (err: any, altitude: number) => {
         if (err) reject(err);
