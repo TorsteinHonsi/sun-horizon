@@ -16,10 +16,14 @@
    - [getCacheData](#getCacheData)
    - [cleanCache](#cleanCache)
 
-## Install
+## ☕️ Support
+<a href="https://www.buymeacoffee.com/jOVt3wg" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important;" ></a>
+<a href="https://www.paypal.me/Jeremy38100" target="_blank"><img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_200x51.png" style="height: 51px !important;" alt="PayPal"></a>
+
+## 🏁 Install
 `npm install sun-horizon`
 
-## Usage
+## 🏃‍♂️ Usage
 
 ✅ Call [init()](#init) function before any other operations.
 
