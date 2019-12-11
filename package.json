@@ -1,6 +1,6 @@
 {
   "name": "sun-horizon",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Horizon and sun path form a lat lng point",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
