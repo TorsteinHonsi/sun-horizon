@@ -2,6 +2,11 @@
   "name": "sun-horizon",
   "version": "1.1.2",
   "description": "Horizon profile and sun path form a lat lng point",
+  "homepage": "https://github.com/Jeremy38100/sun-horizon",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jeremy38100/sun-horizon"
+  },
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "scripts": {
