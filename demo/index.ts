@@ -1,4 +1,4 @@
-import { getHorizon, init } from "../dist/src";
+import { getHorizon, init } from "../src";
 
 const express = require('express');
 const app = express();
