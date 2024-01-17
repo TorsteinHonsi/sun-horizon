@@ -62,13 +62,14 @@ const horizon = await getHorizon({lat: 45, lng: 5});
 {
   azimuthOptions?: AzimuthOptions;
   highestPointOptions?: HighestPointOptions;
+  contourOptions? ContourOptions;
 }
 ```
 
 ### AzimuthOptions
 ```ts
 {
-  azimuthStart?: number; // degree, 0 is North, 90 Eeast
+  azimuthStart?: number; // degree, 0 is North, 90 East
   azimuthEnd?: number; // degree
   azimuthTick?: number; // degree
 }
@@ -79,6 +80,16 @@ const horizon = await getHorizon({lat: 45, lng: 5});
 {
   distanceMax?: number; // meter
   distanceTick?: number; // meter
+}
+```
+
+### ContourOptions
+```ts
+{
+  // If the ratio of the distance between a hill top and the next visible
+  // hilltop is less than this factor, it will be recorded as a contour line.
+  // A sensible value is 0.75.
+  hillTopFactor?: number;
 }
 ```
 

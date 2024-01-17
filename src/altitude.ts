@@ -1,5 +1,5 @@
 import { getLocationDestination } from './location';
-import { HighestPointParams, HorizonPoint, LatLng, HighestPointOptions, HillTopPoint } from './types';
+import { HighestPointParams, HorizonPoint, LatLng, HighestPointOptions, HillTopPoint, ContourOptions } from './types';
 import { getTiles } from './cache';
 
 export async function getAltitude(latLng: LatLng): Promise<number> {
@@ -13,7 +13,12 @@ export async function getAltitude(latLng: LatLng): Promise<number> {
   });
 }
 
-export async function highestPointInAzimuth(origin: LatLng, azimuth: number, options: HighestPointOptions = {}): Promise<HorizonPoint> {
+export async function highestPointInAzimuth(
+  origin: LatLng,
+  azimuth: number,
+  options: HighestPointOptions = {},
+  contourOptions: ContourOptions = {}
+): Promise<HorizonPoint> {
   let originAltitude = await getAltitude(origin) + (options.originElevation || 0);
   let highestPoint: HorizonPoint = {
     latLng: origin,
@@ -36,12 +41,16 @@ export async function highestPointInAzimuth(origin: LatLng, azimuth: number, opt
 
       // Record previous highestPoint as hill top for visualization
       if (
-        options.hillTopFactor &&
+        contourOptions.hillTopFactor &&
         highestPointDistance &&
         // Record as hill top only if there has been a valley between
-        highestPointDistance / distance < options.hillTopFactor
+        highestPointDistance / distance < contourOptions.hillTopFactor
       ) {
-        hillTops.push({ angle: highestPoint.angle, distance: highestPoint.distance })
+        hillTops.push({
+          azimuth,
+          angle: highestPoint.angle,
+          distance: highestPoint.distance
+        });
       }
 
       highestPoint = {

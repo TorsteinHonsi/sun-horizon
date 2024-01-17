@@ -6,6 +6,7 @@ export interface LatLng {
 export interface HorizonOptions {
   azimuthOptions?: AzimuthOptions;
   highestPointOptions?: HighestPointOptions;
+  contourOptions?: ContourOptions;
 }
 
 export interface AzimuthOptions {
@@ -29,7 +30,6 @@ export class AzimuthParams {
 export interface HighestPointOptions {
   distanceMax?: number; // meter
   distanceTick?: number; // meter
-  hillTopFactor?: number;
   originElevation?: number; // meter
 }
 
@@ -45,7 +45,12 @@ export class HighestPointParams {
 
 export interface HillTopPoint {
   angle: number;
+  azimuth: number;
   distance: number;
+}
+
+export interface ContourOptions {
+  hillTopFactor?: 0.75;
 }
 
 export interface HorizonPoint {
@@ -53,13 +58,14 @@ export interface HorizonPoint {
   angle: number; // degree, 0 is same elevation as origin
   altitude: number; // meter
   distance: number; // meter
-  hillTops: Array<HillTopPoint>;
+  hillTops?: Array<HillTopPoint>;
   latLng?: LatLng;
 }
 
 export interface Horizon {
   origin: LatLng;
   elevationProfile: HorizonPoint[];
+  contours: HillTopPoint[][];
 }
 
 export interface CacheData {
