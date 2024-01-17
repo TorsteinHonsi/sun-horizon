@@ -29,6 +29,8 @@ export class AzimuthParams {
 export interface HighestPointOptions {
   distanceMax?: number; // meter
   distanceTick?: number; // meter
+  hillTopFactor?: number;
+  originElevation?: number; // meter
 }
 
 export class HighestPointParams {
@@ -41,11 +43,15 @@ export class HighestPointParams {
   }
 }
 
+export interface HillTopPoint {
+  angle: number;
+}
+
 export interface HorizonPoint {
   azimuth: number; // degree
   angle: number; // degree, 0 is same elevation as origin
   altitude: number; // meter
-
+  hillTops: Array<HillTopPoint>;
   latLng?: LatLng;
 }
 
