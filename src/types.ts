@@ -45,12 +45,14 @@ export class HighestPointParams {
 
 export interface HillTopPoint {
   angle: number;
+  distance: number;
 }
 
 export interface HorizonPoint {
   azimuth: number; // degree
   angle: number; // degree, 0 is same elevation as origin
   altitude: number; // meter
+  distance: number; // meter
   hillTops: Array<HillTopPoint>;
   latLng?: LatLng;
 }

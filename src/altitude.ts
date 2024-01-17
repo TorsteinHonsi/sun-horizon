@@ -20,6 +20,7 @@ export async function highestPointInAzimuth(origin: LatLng, azimuth: number, opt
     altitude: originAltitude,
     angle: 0,
     azimuth,
+    distance: 0,
     hillTops: []
   };
   let highestPointDistance = 0;
@@ -40,7 +41,7 @@ export async function highestPointInAzimuth(origin: LatLng, azimuth: number, opt
         // Record as hill top only if there has been a valley between
         highestPointDistance / distance < options.hillTopFactor
       ) {
-        hillTops.push({ angle: highestPoint.angle })
+        hillTops.push({ angle: highestPoint.angle, distance: highestPoint.distance })
       }
 
       highestPoint = {
@@ -48,6 +49,7 @@ export async function highestPointInAzimuth(origin: LatLng, azimuth: number, opt
         altitude,
         angle,
         azimuth,
+        distance,
         hillTops
       };
       highestPointDistance = distance;
