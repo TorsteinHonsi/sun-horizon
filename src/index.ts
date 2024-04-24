@@ -41,8 +41,12 @@ export async function getHorizon(origin: LatLng, options: HorizonOptions = {}): 
         } else {
           for (let top of hillTops) {
             const factor = lastHillTop.distance / top.distance;
-            // Compare against the hillTopFactor
-            if (factor > 0.75 && factor < (1 / 0.75)) {
+            // Find the next point that is within the factor range and azimuth
+            if (
+              factor > 0.75 &&
+              factor < (1 / 0.75) &&
+              Math.abs(lastHillTop.azimuth - top.azimuth) <= 1
+            ) {
               hillTop = top;
               break;
             }
